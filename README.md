@@ -39,7 +39,7 @@ Configuration Object = { </br>
 
 ## WRITING "Mutable" CODE WITH Immer
 - Redux requires not mutating/changing state directly but coping with (...spread).
-- A createSlice(configObject) library called `Immer` uses a `Proxy` an object to wrap the data this allows Mutation of the code.
+- A createSlice({configObject}) library called `Immer` uses a `Proxy` an object to wrap the data this allows Mutation of the code.
 - Eg. Using Push - state.push( ) because array.push( ) mutates the existing array
 - Eg. Using Find - state.find( ) because array.find( ) creates a new array
 
@@ -57,9 +57,24 @@ Configuration Object = { </br>
           return state.addRecipe.push(action.payload)
         },
     }
-## RETURNED OBJECTS AND AUTO-GENERATED ACTIONS
+## `createSlice( )` RETURNED OBJECTS & AUTO-GENERATED ACTIONS
+- `createSlice({object})` --> Returned Object:
 
+                    {
+                          name: sliceName,                         //prefix for generated action types
+                          reducer: (state, action) => newState,       // completed reducer function
+                          actions: {                             //Auto Generated action creators objects
+                             actionCreator1: (payload) => ({type:'sliceName/actionName1' , payload}),
+                             actionCreator2: (payload) => ({type:'sliceName/actionName1' , payload})
+                            },
+                      }
+                              
+console.log(SliceName.actions.action('payload')
+console.log(todosSlice.actions.addTodo('walk dog'))
+// {type: 'todos/addTodo', payload: 'walk dog'}
+- "ducks pattern suggest exporting action creators seperate from the reducer
 
+          export const { actionCreator1/addTodo, actionCreator2/toggleTodo } = sliceNameSlice.actions
 
 
 
