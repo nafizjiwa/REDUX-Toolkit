@@ -37,9 +37,9 @@ Configuration Object = { </br>
         }
         const todosSlice = createSlice(options);
 
-## Writing "Mutable" Code with Immer
-- Redux requires not mutating/changing state directly but coping with spread operator (...).
-- A createSlice( ) library called `Immer` uses an object called `Proxy` to wrap the data which allows Mutation of the code.
+## WRITING "Mutable" CODE WITH Immer
+- Redux requires not mutating/changing state directly but coping with (...spread).
+- A createSlice(configObject) library called `Immer` uses a `Proxy` an object to wrap the data this allows Mutation of the code.
 - Eg. Using Push - state.push( ) because array.push( ) mutates the existing array
 - Eg. Using Find - state.find( ) because array.find( ) creates a new array
 
@@ -57,7 +57,7 @@ Configuration Object = { </br>
           return state.addRecipe.push(action.payload)
         },
     }
-
+## RETURNED OBJECTS AND AUTO-GENERATED ACTIONS
 
 
 
