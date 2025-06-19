@@ -53,13 +53,16 @@
 - createSlice({name,initialState,reducers}) automatically creates action creators</br>
 - `createSlice({object})` --> RETURNS AN OBJECT with SLICE REDUCERS AND ACTION CREATORS: sliceName.reducer and sliceName.actions.</br>
 
-                    sliceName = {
+                    sliceName = {                sliceName/type1 sliceName/type2  sliceName/type3
                           name: sliceName,                         //prefix for generated action types
                           reducer: (state, action) => newState,      // Case reducer function
                           actions: {                             //Object of auto Generated action creators
-                             actionCreator1: (payload) => ({type:'sliceName/actionTypeName1' , payload}),
-                             actionCreator2: (payload) => ({type:'sliceName/actionTypeName1' , payload})
+                             actionCreatorType1: (payload) => ({type:'sliceName/actionType1Name' , payload}),
+                             actionCreatorType2: (payload) => ({type:'sliceName/actionType2Name' , payload})
                             },
+                          caseReducers: {
+                            actionType: (state, action) => newState
+                          }
                       }
                               
 ##### >>>>>>>>>>>>>> console.log({sliceName}Slice.actions.action('payload') </br>
