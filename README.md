@@ -103,21 +103,16 @@
 - INPUT OBJECT = A reducer property which defines a function, or An object of slice reducers both to create a root reducer.
             
             Input Object is Reducer Property
-            { reducer: {                                              
-                      // Define a state field named `todos`,
-                     // handled by `todosReducer`
-                 todos: todosReducer,                                     slice1: reducer1,
-                 filters: filtersReducer                                  slice2: reducer2,
-             }
+           const store = configure(                                          export const store = configure(
+                           { reducer: {                                                   { reducer: {
+                              todos: todosReducer,                                           slice1: reducer1,
+                              filters: filtersReducer                                        slice2: reducer2,
+                             }     // Define a state field                                  }
+                                  // named `todos`, handled by `todosReducer`                                      
+               }                                                                             })
 - Reducer combines all slice reducers into root reducer function no need for `combineReducers( )`
 - The root reducer creates a store no need for `createStore( )`
 
-        export const store = configure({
-            reducer: {
-              slice1: reducer1,
-              slice2: reducer2
-            }
-        })
 </br>
 </br>
 
