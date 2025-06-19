@@ -102,10 +102,11 @@
       const store = configureStore({INPUT OBJECT})
 - INPUT OBJECT = A reducer property which defines a function used as the root reducer, or an object of slice reducers to create a root reducer.
             
-        reducer: {
-           // Define a top-level state field named `todos`, handled by `todosReducer`
-           todos: todosReducer,
-           filters: filtersReducer
+        reducer: {                                      reducer: {
+           // Define a top-level state field named
+            //`todos`, handled by `todosReducer`
+           todos: todosReducer,                                     slice1: reducer1,
+           filters: filtersReducer                                  slice2: reducer2,
          }
 - Reducer combines all slice reducers into root reducer function no need for `combineReducers( )`
 - The root reducer creates a store no need for `createStore( )`
@@ -116,8 +117,6 @@
               slice2: reducer2
             }
         })
-</br>
-</br>
 </br>
 </br>
 |REVIEW NOTES|
