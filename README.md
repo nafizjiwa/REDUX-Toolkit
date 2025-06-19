@@ -68,10 +68,12 @@
 ##### >>>>>>>>>>>>>> console.log({sliceName}Slice.actions.action('payload') </br>
 ##### >>>>>>>>>>>>>> console.log({todos}Slice.actions.addTodo('walk dog')) </br>
 ##### >>>>>>>>>>>>>> // {type: 'todos/addTodo', payload: 'walk dog'} </br>
-- The generated action creators names are based on reducer functions names 
-- EXPORT TO USE IN OTHER FILES:
+- The generated action creators names are based on reducer functions names
+- createSlice() generates action creators and reducers 
+- EXPORT action creators TO USE IN OTHER FILES:
 
           export const { actionCreator1, actionCreator2 } = {TheReduxSlicesName}Slice.actions
+            - ACTION CREATORS ARE ACCESSED BY PROPERTY addTodo.actions
           export const { addTodo, toggleTodo } = todosSlice.actions
 
 ## RETURN OBJECTS AND REDUCERS
@@ -97,7 +99,9 @@
 
         export const { AC1, AC2 } = todosSlice.actions;      //ACTION CREATORS (AC)
         export default sliceNameSlice.reducer                     //REDUCER
-        export default todosSlice.reducer 
+         - REDUCER IS ACCESSED BY todoSlice.reducer
+        export default todosSlice.reducer
+ 
 ## CONVERTING THE STORE TO USE `configureStore( )`
 - `configureStore( )` setup store by wrapping around createStore( ) and combineReducers( )
 
@@ -129,6 +133,8 @@
 |When exporting action creators and reducers use "duck" pattern.|
 |`configureStore( )` function sets up store. Wrap around `createStore( )` and `combineReducers( )`|
 |When slices are separate files, Export the action creators as named exports and the reducer as a default export.|
+|export const { myActionCreator } = mySlice.actions;|
+|export default mySlice.reducer;|
 |=========================================================================================|
 
 
