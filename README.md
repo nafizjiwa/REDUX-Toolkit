@@ -106,18 +106,29 @@ Configuration Object = { </br>
 ## CONVERTING THE STORE TO USE `configureStore( )`
 - `configureStore( )` Automatically handles store set up
 - Wrap it around createStore( ) and combineReducers( )
+`import { configureStore } from '@redux/toolkit`
 `const store = configureStore({INPUT OBJECT})`
-- INPUT OBJECT = A reducer property that defines a function to use as the root reducer,
--                 or an object of slice reducers combined to create a root reducer.
+- INPUT OBJECT = A reducer property which defines a function used as the root reducer,
+-                 or an object of slice reducers to create a root reducer.
             
         reducer: {
            // Define a top-level state field named `todos`, handled by `todosReducer`
            todos: todosReducer,
            filters: filtersReducer
          }
-- REDUCER: Combines all slice reducers into root reducer function and avoid calling combineReducers( )
-- No need to call `createStore( )` root reducer creates a store
-- 
+- Reducer combines all slice reducers into root reducer function no need for `combineReducers( )`
+- The root reducer creates a store no need for `createStore( )`
+
+        export const stpre = configure({
+            reducer: {
+              slice1: reducer1,
+              slice2: reducer2
+            }
+        })
+</br>
+</br>
+</br>
+</br>
 |REVIEW NOTES|
 |---|
 |- Helps simplify and refactor Redux logic with functions and methods|
