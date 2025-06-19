@@ -4,8 +4,8 @@
 - Helps simplify the store setup with `configureStore( )`</br>
 - Simplifys the logic for actions and reducers</br>
 - Fewer errors from immutable updates </br>
-- Toolkit contains functions to construct a Redux application </br>
-- Most important methods are createSlice( ) and configureStore( ) </br>
+- Toolkit contains functions to help construct a Redux application </br>
+- Methods are: `createSlice( )` and `configureStore( )` </br>
 ## "SLICES" OF STATE
 - A slice is a segment of the global state the focuses on a particular feature. </br>
 - Includes data, reducers, actions and selectors for a specific functionality </br>
