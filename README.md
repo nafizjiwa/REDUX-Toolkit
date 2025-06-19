@@ -70,9 +70,9 @@ Configuration Object = { </br>
                             },
                       }
                               
-console.log(SliceName.actions.action('payload') </br>
-console.log(todosSlice.actions.addTodo('walk dog')) </br>
-// {type: 'todos/addTodo', payload: 'walk dog'} </br>
+##### >>>>>>>>>>>>>> console.log({sliceName}Slice.actions.action('payload') </br>
+##### >>>>>>>>>>>>>> console.log(todosSlice.actions.addTodo('walk dog')) </br>
+##### >>>>>>>>>>>>>> // {type: 'todos/addTodo', payload: 'walk dog'} </br>
 - The generated action creators names are based on reducer functions names 
 - EXPORT TO USE IN OTHER FILES:
 
@@ -84,6 +84,19 @@ console.log(todosSlice.actions.addTodo('walk dog')) </br>
 
       "SLICE REDUCER"  
       {TheReduxSlicesName}Slice.reducer --> represents collection of ALL case reducers
+      
+|Dispatch an Action of Type ---> | 'sliceName/action' |
+|---|---|
+| sliceNameSlice | Uses sliceNameSlice.reducer( ) |
+|| checks if dispatched action's type aligns with any case reducers |
+| Find Match? |   |
+| YES MATCH| the matching case reducer function is executed |
+| NO MATCH | the current state is returned |
+| DIPATCH ACTION TYPE  | 'todos/addTodo' |
+| the Slice 'todosSlice' | employs reducer todosSlice.reducer() |
+|to check if action aligns with any case reducers in |todos.actions|
+|===================================|================================================|
+
 - `ducks` pattern suggest exporting action creators seperate from the reducer.
 - EXPORT so it can integrate into global store and used as slice of state.
 
@@ -91,17 +104,6 @@ console.log(todosSlice.actions.addTodo('walk dog')) </br>
         export default todosSlice.reducer                              //REDUCER
         export default sliceNameSlice.reducer
 
-      
-|Action of Type Dispatched ---> | 'sliceName/action' |
-|---|---|
-| sliceNameSlice | Uses sliceNameSlice.reducer( ) |
-|| checks if dispatched action's type aligns with any case reducers |
-| Find Match |   |
-| yes match| matching case reducer function is executed |
-| No match | the current state is returned |
-| ACTION TYPE DIPATCHED | 'todos/addTodo' |
-| the Slice todosSlice | employs todosSlice.reducer() |
-|to check if action aligns with any cases reducers in |todos.actions|
 
 
 |REVIEW NOTES|
