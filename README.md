@@ -1,9 +1,9 @@
 # REACT-REDUX-toolkit
 
 ## INTRO
-- Helps simplify the store setup </br>
-- no need to add additonal packages</br>
-- less boierplate and fewer errors from immutable updates </br>
+- Helps simplify the store setup with `configureStore( )`</br>
+- Simplifys the logic for actions and reducers</br>
+- Fewer errors from immutable updates </br>
 - Toolkit contains functions to construct a Redux application </br>
 - Most important methods are createSlice( ) and configureStore( ) </br>
 ## "SLICES" OF STATE
@@ -103,9 +103,21 @@ Configuration Object = { </br>
         export const { actionCreator } = todosSlice.actions;            //ACTION CREATORS
         export default todosSlice.reducer                              //REDUCER
         export default sliceNameSlice.reducer
-
-
-
+## CONVERTING THE STORE TO USE `configureStore( )`
+- `configureStore( )` Automatically handles store set up
+- Wrap it around createStore( ) and combineReducers( )
+`const store = configureStore({INPUT OBJECT})`
+- INPUT OBJECT = A reducer property that defines a function to use as the root reducer,
+-                 or an object of slice reducers combined to create a root reducer.
+            
+        reducer: {
+           // Define a top-level state field named `todos`, handled by `todosReducer`
+           todos: todosReducer,
+           filters: filtersReducer
+         }
+- REDUCER: Combines all slice reducers into root reducer function and avoid calling combineReducers( )
+- No need to call `createStore( )` root reducer creates a store
+- 
 |REVIEW NOTES|
 |---|
 |- Helps simplify and refactor Redux logic with functions and methods|
