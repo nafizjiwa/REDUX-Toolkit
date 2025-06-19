@@ -9,7 +9,7 @@
 ## "SLICES" OF STATE
 - A slice is a segment of the global state the focuses on a particular feature. </br>
 - Includes data, reducers, actions and selectors for a specific functionality </br>
-- Each slice of state's reducer is responsible to manage its own slice </br>
+- Each slice of state has a reducer which manages that slice </br>
 ## REFRACTORING with createSlice( )
 - `createSlice(configObject)` - generates action types, action creators, reducers </br>
                                
