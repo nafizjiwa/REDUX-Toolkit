@@ -74,17 +74,24 @@ console.log(SliceName.actions.action('payload') </br>
 console.log(todosSlice.actions.addTodo('walk dog')) </br>
 // {type: 'todos/addTodo', payload: 'walk dog'} </br>
 - The generated action creators names are based on reducer functions names 
-- `ducks` pattern suggest exporting action creators seperate from the reducer to use in other files.
+- EXPORT TO USE IN OTHER FILES:
 
           export const { actionCreator1, actionCreator2 } = {TheReduxSlicesName}Slice.actions
           export const { addTodo, toggleTodo } = todosSlice.actions
 
 ## RETURN OBJECTS AND REDUCERS
-- The Reducer within returned object of createSlice( )
+- The Reducer within the returned object of createSlice( )</br>
 
       "SLICE REDUCER"  
       {TheReduxSlicesName}Slice.reducer --> represents collection of ALL case reducers
+- `ducks` pattern suggest exporting action creators seperate from the reducer.
+- EXPORT so it can integrate into global store and used as slice of state.
 
+        export const { actionCreator } = todosSlice.actions;            //ACTION CREATORS
+        export default todosSlice.reducer                              //REDUCER
+        export default sliceNameSlice.reducer
+
+      
 |Action of Type Dispatched ---> | 'sliceName/action' |
 |---|---|
 | sliceNameSlice | Uses sliceNameSlice.reducer( ) |
