@@ -133,6 +133,7 @@
 |When exporting action creators and reducers use "duck" pattern.|
 |`configureStore( )` function sets up store. Wrap around `createStore( )` and `combineReducers( )`|
 |When slices are separate files, Export the action creators as named exports and the reducer as a default export.|
+|createSlice() generates action creators and slice reducers to access them:|
 |export const { myActionCreator } = mySlice.actions;|
 |export default mySlice.reducer;|
 |=========================================================================================|
