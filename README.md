@@ -49,21 +49,21 @@
           return state.addRecipe.push(action.payload)
         },
     }
-## `createSlice( )` RETURNED OBJECTS & AUTO-GENERATED ACTIONS
+## `createSlice( )` RETURNS AN OBJECT & AUTO-GENERATED ACTIONS
 - createSlice({name,initialState,reducers}) automatically creates action creators</br>
-- `createSlice({object})` --> Returned Object:</br>
+- `createSlice({object})` --> RETURNS AN OBJECT with SLICE REDUCERS AND ACTION CREATORS: sliceName.reducer and sliceName.actions.</br>
 
-                    {
+                    sliceName = {
                           name: sliceName,                         //prefix for generated action types
-                          reducer: (state, action) => newState,       // Case reducer function
+                          reducer: (state, action) => newState,      // Case reducer function
                           actions: {                             //Object of auto Generated action creators
-                             actionCreator1: (payload) => ({type:'sliceName/actionName1' , payload}),
-                             actionCreator2: (payload) => ({type:'sliceName/actionName1' , payload})
+                             actionCreator1: (payload) => ({type:'sliceName/actionTypeName1' , payload}),
+                             actionCreator2: (payload) => ({type:'sliceName/actionTypeName1' , payload})
                             },
                       }
                               
 ##### >>>>>>>>>>>>>> console.log({sliceName}Slice.actions.action('payload') </br>
-##### >>>>>>>>>>>>>> console.log(todosSlice.actions.addTodo('walk dog')) </br>
+##### >>>>>>>>>>>>>> console.log({todos}Slice.actions.addTodo('walk dog')) </br>
 ##### >>>>>>>>>>>>>> // {type: 'todos/addTodo', payload: 'walk dog'} </br>
 - The generated action creators names are based on reducer functions names 
 - EXPORT TO USE IN OTHER FILES:
