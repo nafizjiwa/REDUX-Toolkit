@@ -38,19 +38,19 @@ Configuration Object = { </br>
         const todosSlice = createSlice(options);
 
 ## WRITING "Mutable" CODE WITH Immer
-- Redux requires not mutating/changing state directly but coping with (...spread).
-- A createSlice({configObject}) library called `Immer` uses a `Proxy` an object to wrap the data this allows Mutation of the code.
-- Eg. Using Push - state.push( ) because array.push( ) mutates the existing array
-- Eg. Using Find - state.find( ) because array.find( ) creates a new array
+- Redux requires not mutating/changing state directly but coping with (...spread).</br>
+- A createSlice({configObject}) library called `Immer` uses a `Proxy` an object to wrap the data this allows Mutation of the code.</br>
+- Eg. Using Push - state.push( ) because array.push( ) mutates the existing array </br>
+- Eg. Using Find - state.find( ) because array.find( ) creates a new array</br>
 
-... The code logic can go from immutable 
+... The code logic can go from immutable </br>
 
     reducers: {
        addRecipe: (state, action) => {
          return [...state, action.payload]
        },
     }
-... To Mutable
+... To Mutable </br>
 
     reducers: {
         addRecipe: (state, action) => {
@@ -58,24 +58,43 @@ Configuration Object = { </br>
         },
     }
 ## `createSlice( )` RETURNED OBJECTS & AUTO-GENERATED ACTIONS
-- `createSlice({object})` --> Returned Object:
+- createSlice({name,initialState,reducers}) automatically creates action creators</br>
+- `createSlice({object})` --> Returned Object:</br>
 
                     {
                           name: sliceName,                         //prefix for generated action types
-                          reducer: (state, action) => newState,       // completed reducer function
-                          actions: {                             //Auto Generated action creators objects
+                          reducer: (state, action) => newState,       // Case reducer function
+                          actions: {                             //Object of auto Generated action creators
                              actionCreator1: (payload) => ({type:'sliceName/actionName1' , payload}),
                              actionCreator2: (payload) => ({type:'sliceName/actionName1' , payload})
                             },
                       }
                               
-console.log(SliceName.actions.action('payload')
-console.log(todosSlice.actions.addTodo('walk dog'))
-// {type: 'todos/addTodo', payload: 'walk dog'}
-- "ducks pattern suggest exporting action creators seperate from the reducer
+console.log(SliceName.actions.action('payload') </br>
+console.log(todosSlice.actions.addTodo('walk dog')) </br>
+// {type: 'todos/addTodo', payload: 'walk dog'} </br>
+- The generated action creators names are based on reducer functions names 
+- `ducks` pattern suggest exporting action creators seperate from the reducer to use in other files.
 
-          export const { actionCreator1/addTodo, actionCreator2/toggleTodo } = sliceNameSlice.actions
+          export const { actionCreator1, actionCreator2 } = {TheReduxSlicesName}Slice.actions
+          export const { addTodo, toggleTodo } = todosSlice.actions
 
+## RETURN OBJECTS AND REDUCERS
+- The Reducer within returned object of createSlice( )
+
+      "SLICE REDUCER"  
+      {TheReduxSlicesName}Slice.reducer --> represents collection of ALL case reducers
+
+|Action of Type Dispatched ---> | 'sliceName/action' |
+|---|---|
+| sliceNameSlice | Uses sliceNameSlice.reducer( ) |
+|| checks if dispatched action's type aligns with any case reducers |
+| Find Match |   |
+| yes match| matching case reducer function is executed |
+| No match | the current state is returned |
+| ACTION TYPE DIPATCHED | 'todos/addTodo' |
+| the Slice todosSlice | employs todosSlice.reducer() |
+|to check if action aligns with any cases reducers in |todos.actions|
 
 
 |REVIEW NOTES|
