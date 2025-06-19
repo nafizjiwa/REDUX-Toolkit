@@ -85,17 +85,17 @@ Configuration Object = { </br>
       "SLICE REDUCER"  
       {TheReduxSlicesName}Slice.reducer --> represents collection of ALL case reducers
       
-|Dispatch an Action of Type ---> | 'sliceName/action' |
-|---|---|
-| sliceNameSlice | Uses sliceNameSlice.reducer( ) |
-|| checks if dispatched action's type aligns with any case reducers |
-| Find Match? |   |
-| YES MATCH| the matching case reducer function is executed |
-| NO MATCH | the current state is returned |
-| DIPATCH ACTION TYPE  | 'todos/addTodo' |
-| the Slice 'todosSlice' | employs reducer todosSlice.reducer() |
-|to check if action aligns with any case reducers in |todos.actions|
-|===================================|================================================|
+|Dispatch an Action of Type ---> |'sliceName/action'|  |
+|---|---|---|
+|| {sliceName}Slice | Uses reducer {sliceName}Slice.reducer( ) |
+||| checks if dispatched action's type aligns with any case reducers |
+|| Find Match? |   |
+|| YES MATCH| the matching case reducer function is executed |
+|| NO MATCH | the current state is returned |
+| DIPATCH ACTION TYPE |'todos/addTodo'| |
+|| the Slice 'todosSlice' | employs reducer todosSlice.reducer() |
+||to check if action aligns with any case reducers in |todos.actions|
+|||Finds 'todos/addTodo'|
 
 - `ducks` pattern suggest exporting action creators seperate from the reducer.
 - EXPORT so it can integrate into global store and used as slice of state.
