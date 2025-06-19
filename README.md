@@ -11,22 +11,14 @@
 - Includes data, reducers, actions and selectors for a specific functionality </br>
 - Each slice of state's reducer is responsible to manage its own slice </br>
 ## REFRACTORING with createSlice( )
-- `createSlice(configObject)` - generates action types, action creators, reducers with 1 parameter </br>
-
-Configuration Object = { </br>
-------- name: name of slice,   </br>
-------- initialState: reducers initial state value   </br>
-------- reducers: { an object of key: value pairs    </br>
------------- action type: a method with directions how to change state for this action   </br>
-------- } </br>
-}</br>
-                                           
+- `createSlice(configObject)` - generates action types, action creators, reducers </br>
+                               
         const options = {
-            name: 'sliceName',
-            initialState: someValue,
-            reducers: {
-              // case reducers methods for the slice.
-              // reducers 2 parameters state, action
+            name: 'sliceName',                //name of slice
+            initialState: someValue,         //reducers initial state value 
+            reducers: {                      //an object of key: value pairs
+              //case reducers for the slices 2 parameters: state, action 
+              //actionType: Methods with directions how to change this actions state
                 method1: (state, action) => {
                     return ;
                 },
@@ -35,7 +27,7 @@ Configuration Object = { </br>
                 },
              }
         }
-        const todosSlice = createSlice(options);
+        const todosSlice = createSlice(options);   //takes in 1 parameter
 
 ## WRITING "Mutable" CODE WITH Immer
 - Redux requires not mutating/changing state directly but coping with (...spread).</br>
@@ -100,16 +92,15 @@ Configuration Object = { </br>
 - `ducks` pattern suggest exporting action creators seperate from the reducer.
 - EXPORT so it can integrate into global store and used as slice of state.
 
-        export const { actionCreator } = todosSlice.actions;            //ACTION CREATORS
-        export default todosSlice.reducer                              //REDUCER
-        export default sliceNameSlice.reducer
+        export const { AC1, AC2 } = todosSlice.actions;      //ACTION CREATORS (AC)
+        export default sliceNameSlice.reducer                     //REDUCER
+        export default todosSlice.reducer 
 ## CONVERTING THE STORE TO USE `configureStore( )`
-- `configureStore( )` Automatically handles store set up
-- Wrap it around createStore( ) and combineReducers( )
-`import { configureStore } from '@redux/toolkit`
-`const store = configureStore({INPUT OBJECT})`
-- INPUT OBJECT = A reducer property which defines a function used as the root reducer,
--                 or an object of slice reducers to create a root reducer.
+- `configureStore( )` setup store by wrapping around createStore( ) and combineReducers( )
+
+      import { configureStore } from '@redux/toolkit
+      const store = configureStore({INPUT OBJECT})
+- INPUT OBJECT = A reducer property which defines a function used as the root reducer, or an object of slice reducers to create a root reducer.
             
         reducer: {
            // Define a top-level state field named `todos`, handled by `todosReducer`
@@ -119,7 +110,7 @@ Configuration Object = { </br>
 - Reducer combines all slice reducers into root reducer function no need for `combineReducers( )`
 - The root reducer creates a store no need for `createStore( )`
 
-        export const stpre = configure({
+        export const store = configure({
             reducer: {
               slice1: reducer1,
               slice2: reducer2
