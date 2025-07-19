@@ -1,4 +1,4 @@
-# REACT-REDUX-Toolkit
+# REDUX-Toolkit
 
 ## INTRO
 - Redux Toolkit SIMPLIES:
