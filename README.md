@@ -141,7 +141,7 @@
 |export const { myActionCreator } = mySlice.actions;|
 |export default mySlice.reducer;|
 
-## DIFFERENCE BETWEEN createStore( ) and configureStore( )
+# DIFFERENCE BETWEEN createStore( ) and configureStore( )
 
 
 In Redux, createStore and configureStore set up the store for your state to live in.
