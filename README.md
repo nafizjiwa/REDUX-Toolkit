@@ -1,21 +1,28 @@
-# REACT-REDUX-toolkit
+# REACT-REDUX-Toolkit
 
 ## INTRO
-- Helps simplify the store setup with `configureStore( )`</br>
-- Simplifys the logic for actions and reducers</br>
-- Fewer errors from immutable updates </br>
+- Redux Toolkit SIMPLIES:
+  - setting up the store setup with `configureStore( )`</br>
+  - Creating reducers and aciton</br>
+  - Performs immutable update so fewer errors </br>
 - Toolkit contains functions to help construct a Redux application </br>
-- Methods are: `createSlice( )` and `configureStore( )` </br>
+- Methods are:
+        - `createSlice( )` and </br>
+        - `configureStore( )` </br>
 ## "SLICES" OF STATE
 - A slice is a segment of the global state the focuses on a particular feature. </br>
 - Includes data, reducers, actions and selectors for a specific functionality </br>
 - Each slice of state has a reducer which manages that slice </br>
-## REFRACTORING with createSlice( )
-- `createSlice(configObject)` - generates action types, action creators, reducers </br>
+## REFRACTORING create a slice with createSlice( )
+- In Redux we must write action types (AT), action creators (AC), and reducers seperately
+- `createSlice(Object argument)`
+      - It auto generates action types, action creators, and reducers so we don't need to write them </br>
+      
                                
-        const options = {
-            name: 'sliceName',                //name of slice
-            initialState: someValue,         //reducers initial state value 
+        const options = {                      //configObject any name
+            name: 'sliceName',                //name of the slice
+                                              //Used to generate the AT and AC
+            initialState: someValue,         //reducers initialize state value 
             reducers: {                      //an object of key: value pairs
               //case reducers for the slices 2 parameters: state, action 
               //actionType: Methods with directions how to change this actions state
