@@ -140,7 +140,46 @@
 |createSlice() generates action creators and slice reducers to access them:|
 |export const { myActionCreator } = mySlice.actions;|
 |export default mySlice.reducer;|
-|=========================================================================================|
+
+## DIFFERENCE BETWEEN createStore( ) and configureStore( )
+
+
+In Redux, createStore and configureStore set up the store for your state to live in.
+Compare:
+
+### 🏗️ createStore (Classic Redux)
+- In the redux library.
+- Requires manual setup using createStore() and combineReducers().
+- Middleware (like redux-thunk) is added with applyMiddleware().
+
+        import { createStore, combineReducers, applyMiddleware } from 'redux';
+        import thunk from 'redux-thunk';
+        
+        const rootReducer = combineReducers({
+          // your reducers
+        });
+        
+        const store = createStore(rootReducer, applyMiddleware(thunk));
+
+### 🚀 configureStore (Redux Toolkit)
+- imported with `@reduxjs/toolkit`
+- configureStore( ) Automatically sets up the store
+- No need for combineReducers() and applyMiddleware() Built-in support for redux-thunk 
+- Accepts an object with reducer, where you define slice reducers.
+
+      import { configureStore } from '@reduxjs/toolkit';
+      import todosReducer from './todosSlice';
+      
+      const store = configureStore({
+        reducer: {
+          todos: todosReducer,
+          // other slices
+        }
+      });
+
+
+
+
 
 
 
