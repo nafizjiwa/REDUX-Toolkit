@@ -79,7 +79,7 @@
           export const { actionCreator1, actionCreator2 } = {TheReduxSlicesName}Slice.actions
            
           export const { addTodo, toggleTodo } = todosSlice.actions
- - ACTION CREATORS ARE ACCESSED BY PROPERTY addTodo.actions
+ - ACTION CREATORS ARE ACCESSED BY PROPERTY `addTodo.actions`
 
 ## RETURN OBJECTS AND REDUCERS
 - The Reducer within the returned object of createSlice( )</br>
@@ -107,8 +107,7 @@
          
         export const { addTodo, toggleTodo } = todosSlice.actions
         export default todosSlice.reducer
-  
-  - REDUCER IS ACCESSED BY todoSlice.reducer
+- REDUCER IS ACCESSED BY `todoSlice.reducer`
  
 ## CONVERTING THE STORE TO USE `configureStore( )`
 - `configureStore( )` setup store by wrapping around createStore( ) and combineReducers( )
