@@ -2,13 +2,10 @@
 
 ## INTRO
 - Redux Toolkit SIMPLIES:
-  - setting up the store setup with `configureStore( )`</br>
-  - Creating reducers and aciton</br>
+  - setting up the store with `configureStore( )`</br>
+  - Creating reducers and aciton with `createSlice( )`</br>
   - Performs immutable update so fewer errors </br>
-- Toolkit contains functions to help construct a Redux application </br>
-- Methods are:
-        - `createSlice( )` and </br>
-        - `configureStore( )` </br>
+- Toolkit also uses other functions to help construct a Redux application </br>
 ## "SLICES" OF STATE
 - A slice is a segment of the global state the focuses on a particular feature. </br>
 - Includes data, reducers, actions and selectors for a specific functionality </br>
@@ -24,8 +21,8 @@
                                               //Used to generate the AT and AC
             initialState: someValue,         //reducers initialize state value 
             reducers: {                      //an object of key: value pairs
-              //case reducers for the slices 2 parameters: state, action 
-              //actionType: Methods with directions how to change this actions state
+                //The slice's case reducers have 2 parameters: state, action 
+                //actionType: A Methods with directions how to change this actions state
                 method1: (state, action) => {
                     return ;
                 },
