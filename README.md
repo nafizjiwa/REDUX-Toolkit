@@ -33,7 +33,7 @@
              }
         }
         const todosSlice = createSlice(options);   //takes in 1 parameter
-#### Once the Object is created no need to create action objects or action creator
+### Once the Object is created no need to create action objects or action creator
 -This action type: `(switch case)`
 
        case 'favoriteRecipes/addRecipe':
