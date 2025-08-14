@@ -1,11 +1,11 @@
 # REDUX-Toolkit
 
 ## INTRO
-- Redux Toolkit SIMPLIES:
+- Redux Toolkit STREAMLINES and SIMPLIES the code:
   - setting up the store with `configureStore( )`</br>
-  - Creating reducers and aciton with `createSlice( )`</br>
+  - Creating reducers and action with `createSlice( )`</br>
   - Performs immutable update so fewer errors </br>
-- Toolkit also uses other functions to help construct a Redux application </br>
+- Toolkit also uses other functions to in Redux apps </br>
 ## "SLICES" OF STATE
 - A slice is a segment of the global state the focuses on a particular feature. </br>
 - Includes data, reducers, actions and selectors for a specific functionality </br>
