@@ -20,26 +20,25 @@
         const options = {                      //configObject name can be any name
             name: 'sliceName',           //Slice's name which generates - AT & AC
             initialState: someValue,         //reducers initial state value 
-            reducers: {                  //Object of reducers [key(type): value] pairs
-                               //Methods are the actionType the SLICE can handle
+            reducers: {                  //Object of reducers [key(type): value(methods)] pairs
                          //When action triggered that Method describes how the state is updated
-                        //This SLICE can handle these action Types
-                method(1) or case reducer(1): (state, action) => {
-                    return ;          //Case reducers for this SLICE
-                                        // They have 2 parameters: state, action 
+                //This SLICE can handle these action Types(1), and (2)
+                actionType(1): (state, action) => {
+                    return ;          //Case reducers/methods for this SLICE has
+                                        // 2 parameters: state, action 
                 },
-                method2: (state, action) => {
-                    return ;
+                actionType(2): (state, action) => { //method or case reducer
+                    return ;       //returns how state is updated
                 },
              }
         }
         const todosSlice = createSlice(options);   //takes in 1 parameter
-
--This action type: (switch case)
+#### Once the Object is created no need to create action objects or action creator
+-This action type: `(switch case)`
 
        case 'favoriteRecipes/addRecipe':
             return [...state, action.payload]
--Can be rewritten like: (case reducer)
+-Can be rewritten like: `case reducer)`
 
        addRecipe: (state, action) => {
               return [...state, action.payload]
