@@ -15,7 +15,8 @@
 - `createSlice(Configuration Object argument)` ---> `A SLICE`
     - Auto generates the components (AT), (AC), (R) to manage a slice `NO NEED TO WRITE THEIR CODE` </br>
 - Create CONFIGURATION OBJECT for `createSlice()` - contains 3 properties  name, initialState, reducers
-- The case reducers are similar to switch(action.type) statement cases                
+- The case reducers are similar to switch(action.type) statement cases
+               
         const options = {                      //configObject name can be any name
             name: 'sliceName',           //Slice's name which generates - AT & AC
             initialState: someValue,         //reducers initial state value 
@@ -34,16 +35,15 @@
         }
         const todosSlice = createSlice(options);   //takes in 1 parameter
 
-- This action type:
+-This action type: (switch case)
 
-     case 'favoriteRecipes/addRecipe':
-          return [...state, action.payload]
--Can be rewritten like:
-
-     addRecipe: (state, action) => {
+       case 'favoriteRecipes/addRecipe':
             return [...state, action.payload]
-          },
+-Can be rewritten like: (case reducer)
 
+       addRecipe: (state, action) => {
+              return [...state, action.payload]
+            },
 ## WRITING "Mutable" CODE WITH Immer
 - Redux requires not mutating/changing state directly but coping with (...spread).</br>
 - A createSlice({configObject}) library called `Immer` uses a `Proxy` an object to wrap the data this allows Mutation of the code.</br>
