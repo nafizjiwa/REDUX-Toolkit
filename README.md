@@ -1,30 +1,31 @@
 # REDUX-Toolkit
 
 ## INTRO
-- Redux Toolkit STREAMLINES and SIMPLIES the code:
-  - setting up the store with `configureStore( )`</br>
-  - Creating reducers and action with `createSlice( )`</br>
-  - Performs immutable update so fewer errors </br>
-- Toolkit also other functions used in Redux apps </br>
+- Redux Toolkit STREAMLINES, SIMPLIES and SHORTENS written code as in:
+  - Setting up the store with `configureStore( )`</br>
+  - Creating reducers and action creators with `createSlice( )`</br>
+  - Toolkit reduces boilerplate allows mutable code for fewer errors </br>
+  - Toolkit has other useable functions</br>
 ## "SLICES" OF STATE
-- A slice is a segment of the global state the focuses on a particular feature. </br>
-- Slices includes data, reducers, actions and selectors for a specific feature </br>
+- A slice is a segment of the global state responsible for a particular feature. </br>
+- Slices include data, reducers, actions creators for a specific feature </br>
 - To reduce written code of SLICES Redux Toolkit has `createSlice( )`
-## REFRACTORING create a slice with createSlice( )
-- In Redux we must write action types (AT), action creators (AC), and reducers seperately
-- `createSlice(Object argument)`
-      - It auto generates action types, action creators, and reducers so we don't need to write them </br>
-      
-                               
-        const options = {                      //configObject any name
-            name: 'sliceName',                //name of the slice
-                                              //Used to generate the AT and AC
-            initialState: someValue,         //reducers initialize state value 
-            reducers: {                      //an object of key: value pairs
-                //The slice's case reducers have 2 parameters: state, action 
-                //actionType: A Methods with directions how to change this actions state
-                method1: (state, action) => {
-                    return ;
+## REFRACTORING with createSlice( ) create a slice 
+- In Redux action types (AT), action creators (AC), and Reducers (R) are written out seperately
+- `createSlice(Configuration Object argument)` ---> `A SLICE`
+    - Auto generates the components (AT), (AC), (R) to manage a slice `NO NEED TO WRITE THEIR CODE` </br>
+- Create CONFIGURATION OBJECT for `createSlice()` - contains 3 properties  name, initialState, reducers
+- The case reducers are similar to switch(action.type) statement cases                
+        const options = {                      //configObject name can be any name
+            name: 'sliceName',           //Slice's name which generates - AT & AC
+            initialState: someValue,         //reducers initial state value 
+            reducers: {                  //Object of reducers [key(type): value] pairs
+                               //Methods are the actionType the SLICE can handle
+                         //When action triggered that Method describes how the state is updated
+                        //This SLICE can handle these action Types
+                method(1) or case reducer(1): (state, action) => {
+                    return ;          //Case reducers for this SLICE
+                                        // They have 2 parameters: state, action 
                 },
                 method2: (state, action) => {
                     return ;
@@ -32,6 +33,16 @@
              }
         }
         const todosSlice = createSlice(options);   //takes in 1 parameter
+
+- This action type:
+
+     case 'favoriteRecipes/addRecipe':
+          return [...state, action.payload]
+-Can be rewritten like:
+
+     addRecipe: (state, action) => {
+            return [...state, action.payload]
+          },
 
 ## WRITING "Mutable" CODE WITH Immer
 - Redux requires not mutating/changing state directly but coping with (...spread).</br>
