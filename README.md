@@ -8,8 +8,8 @@
 - Toolkit also uses other functions to in Redux apps </br>
 ## "SLICES" OF STATE
 - A slice is a segment of the global state the focuses on a particular feature. </br>
-- Includes data, reducers, actions and selectors for a specific functionality </br>
-- Each slice of state has a reducer which manages that slice </br>
+- Slices includes data, reducers, actions and selectors for a specific feature </br>
+- To reduce written code of SLICES Redux Toolkit has `createSlice( )`
 ## REFRACTORING create a slice with createSlice( )
 - In Redux we must write action types (AT), action creators (AC), and reducers seperately
 - `createSlice(Object argument)`
