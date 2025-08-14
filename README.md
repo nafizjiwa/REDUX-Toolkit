@@ -11,7 +11,7 @@
 - Slices include data, reducers, actions creators for a specific feature </br>
 - To reduce written code of SLICES Redux Toolkit has `createSlice( )`
 ## REFRACTORING with createSlice( ) create a slice 
-- In Redux action types (AT), action creators (AC), and Reducers (R) are written out seperately
+- In Redux action types (AT), action creators (AC), and Reducers (R) are written out seperately and in seperate files.
 - `createSlice(Configuration Object argument)` ---> `A SLICE`
     - Auto generates the components (AT), (AC), (R) to manage a slice `NO NEED TO WRITE THEIR CODE` </br>
 - Create CONFIGURATION OBJECT for `createSlice()` - contains 3 properties  name, initialState, reducers
