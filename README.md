@@ -20,8 +20,8 @@
         const options = {                      //configObject name can be any name
             name: 'sliceName',           //Slice's name which generates - AT & AC
             initialState: someValue,         //reducers initial state value 
-            reducers: {                  //Object of reducers [key(type): value(methods)] pairs
-                         //When action triggered that Method describes how the state is updated
+            reducers: {               //Object of reducers [key(type): value(methods)] pairs
+                    //When action triggered that Method describes how the state is updated
                 //This SLICE can handle these action Types(1), and (2)
                 actionType(1): (state, action) => {
                     return ;          //Case reducers/methods for this SLICE has
@@ -36,32 +36,38 @@
 ### Once the Object is created no need to create action objects or action creator
 -This action type: `(switch case)`
 
+       const favoriteRecipesReducer = (state = initialState, action) => {
        case 'favoriteRecipes/addRecipe':
             return [...state, action.payload]
--Can be rewritten like: `case reducer)`
+-Can be rewritten like: `(case reducer)`
 
+       name: 'favoriteRecipes'
+       initialState: []
        addRecipe: (state, action) => {
               return [...state, action.payload]
             },
 ## WRITING "Mutable" CODE WITH Immer
-- Redux requires not mutating/changing state directly but coping with (...spread).</br>
-- A createSlice({configObject}) library called `Immer` uses a `Proxy` an object to wrap the data this allows Mutation of the code.</br>
-- Eg. Using Push - state.push( ) because array.push( ) mutates the existing array </br>
-- Eg. Using Find - state.find( ) because array.find( ) creates a new array</br>
+- Redux requires reducers not to mutate/change state directly </br>
+- createSlice({configObject}) uses a library called `Immer` to safely “mutate” our state
+- `Immer` - uses a JS object called `Proxy` to wraps the data
+- 'Proxy' Allow the wrapped data to be mutated.</br>
+- So functions which mutate code can be used
+- Eg. Using Push -> state.push( ) because array.push( ) mutates the existing state array </br>
+- Eg. Using Find -> state.find( ) because array.find( ) creates a new state array</br>
 
-... The code logic can go from immutable </br>
+... The code logic can go from `immutable` </br>
 
     reducers: {
        addRecipe: (state, action) => {
-         return [...state, action.payload]
-       },
+         return [...state, action.payload]   
+       },        //HERE PREVIOUSE STATE MUST BE COPIED INTO NEW STATE
     }
-... To Mutable </br>
+... To `Mutable` </br>
 
     reducers: {
         addRecipe: (state, action) => {
-          return state.addRecipe.push(action.payload)
-        },
+         state.push(action.payload)    //NO RETURN REQUIRED
+        },        //THE NEW STATE DOES NOT HAVE PREVIOUS STATE
     }
 ## `createSlice( )` RETURNS AN OBJECT & AUTO-GENERATED ACTIONS
 - createSlice({name,initialState,reducers}) automatically creates action creators</br>
