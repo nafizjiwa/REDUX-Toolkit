@@ -88,47 +88,44 @@
                             actionType: (state, action) => newState
                           }
                       }
-                              
-##### >>>>>>>>>>>>>> console.log({sliceName}Slice.actions.action('payload') </br>
-##### >>>>>>>>>>>>>> console.log({todos}Slice.actions.addTodo('walk dog')) </br>
-##### >>>>>>>>>>>>>> // {type: 'todos/addTodo', payload: 'walk dog'} </br>
-- EXPORT action creators TO USE IN OTHER FILES as `NAMED EXPORTS`:
+###### To Access this action from the return object { type: 'todos/addTodo', payload: 'walk dog' } </br>
+  - As above the auto generated ~action creators~ accept one argument `payload`
+  - {sliceName}Slice.actions.action(`payload`)</br>
+  - todosSlice.actions.addTodo(`walk dog`) </br>
 
-          export const { actionCreator1, actionCreator2 } = {TheSlicesName}Slice.actions
-           
-          export const { addTodo, toggleTodo } = todosSlice.actions
- - ACTION CREATORS ARE ACCESSED BY PROPERTY `addTodo.actions`
+          export const { actionCreator1, ... } = 
 
-## RETURN OBJECTS AND REDUCERS
-- The Reducer within the returned object of createSlice( )</br>
+## THE RETURN OBJECTS AND REDUCERS from 'createslice( )`
 
       "SLICE REDUCER"  
-      {TheReduxSlicesName}Slice.reducer --> represents collection of ALL case reducers
-      
-|Dispatch an Action of Type ---> |'sliceName/action'|  |
+      {TheSlicesName}Slice.reducer --> represents ALL case reducers and actions of the SLICE
+      todosSlice.reducer --> with actions addTodo and toggleTodo
+|When an Aciton is Dispatch of Type ---> |'sliceName/action'|  |
 |---|---|---|
-|| {sliceName}Slice | Uses reducer {sliceName}Slice.reducer( ) |
-||| checks if dispatched action's type aligns with any case reducers |
-|| Find Match? |   |
-|| YES MATCH| the matching case reducer function is executed |
-|| NO MATCH | the current state is returned |
+||Each Slice | Uses reducer {sliceName}Slice.reducer( ) to check the action's type |
+|||matches any of its case reducers |
+|| Find Match TO case reducer? |   |
+|| MATCH: YES| case reducer function is executed |
+|| MATCH: NO | the current state is returned |
 | DIPATCH ACTION TYPE |'todos/addTodo'| |
 || the Slice 'todosSlice' | employs reducer todosSlice.reducer() |
 ||to check if action aligns with any case reducers in |todos.actions|
 |||Finds 'todos/addTodo'|
 
-- `ducks` pattern suggest exporting action creators seperate from the reducer.
-- EXPORT so it can integrate into global store and used as slice of state.
+- `ducks` pattern suggest exporting the reducer and action creators as NAMED EXPORTS `{Slice'sName}Slice.reducer`.
+    - EXPORTING integrates reducer to the store and used as slice of state.
 
-        export const { AC1, AC2 } = todosSlice.actions;      //ACTION CREATORS (AC)
-        export default sliceNameSlice.reducer                     //REDUCER
+        export const { AC1, AC2 } = [TheSlicesName]Slice.action;      //ACTION CREATORS (AC)
+        export default [slice'sName]Slice.reducer                     //REDUCER
          
         export const { addTodo, toggleTodo } = todosSlice.actions
         export default todosSlice.reducer
-- REDUCER IS ACCESSED BY `todoSlice.reducer`
+###### TO ACCESS:
+      -REDUCER ---> `todoSlice.reducer`
+      -ACTION CREATORS ---> `addTodo.actions`
  
 ## CONVERTING THE STORE TO USE `configureStore( )`
-- `configureStore( )` setup store by wrapping around createStore( ) and combineReducers( )
+- It wraps around createStore( ) and combineReducers( ) to simplify store setup.
 
       import { configureStore } from '@redux/toolkit
       const store = configureStore({INPUT OBJECT})
