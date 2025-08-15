@@ -69,9 +69,12 @@
          state.push(action.payload)    //NO RETURN REQUIRED
         },        //THE NEW STATE DOES NOT HAVE PREVIOUS STATE
     }
-## `createSlice( )` RETURNS AN OBJECT & AUTO-GENERATED ACTIONS
+## THE RETURNED OBJECT & AUTO-GENERATED ACTIONS FROM `createSlice( )`
 - createSlice({name,initialState,reducers}) automatically creates action creators</br>
-- `createSlice({object})` --> RETURNS AN OBJECT with SLICE REDUCERS AND ACTION CREATORS: sliceName.reducer and sliceName.actions.</br>
+- `createSlice({object})`--> RETURNS AN OBJECT with SLICE REDUCERS AND ACTION CREATORS:
+||
+||
+    sliceName.reducer and sliceName.actions.</br>
 
                     sliceName = {                sliceName/type1 sliceName/type2  sliceName/type3
                           name: sliceName,                         //prefix for generated action types
