@@ -100,26 +100,27 @@
       "SLICE REDUCER"  
       {TheSlicesName}Slice.reducer --> represents ALL case reducers and actions of the SLICE
       todosSlice.reducer --> with actions addTodo and toggleTodo
-|When an Aciton is Dispatch of Type ---> |'sliceName/action'|  |
+|When an Aciton is Dispatch |Of Type: 'sliceName/action'|  |
 |---|---|---|
-||Each Slice | Uses reducer {sliceName}Slice.reducer( ) to check the action's type |
-|||matches any of its case reducers |
-|| Find Match TO case reducer? |   |
-|| MATCH: YES| case reducer function is executed |
-|| MATCH: NO | the current state is returned |
-| DIPATCH ACTION TYPE |'todos/addTodo'| |
-|| the Slice 'todosSlice' | employs reducer todosSlice.reducer() |
-||to check if action aligns with any case reducers in |todos.actions|
+||All Slice's | Check the action type using their Reducers |
+|||If they have a match with their case reducers |
+||| {sliceName}Slice.reducer( )|
+|Is there a Match to case reducer?|MATCH:||
+||YES| case reducer function is executed |
+||NO | the current state is returned |
+| EG. DIPATCHED ACTION TYPE |'todos/addTodo'| |
+|| The Slice 'todosSlice' | Executes the reducer todosSlice.reducer() |
+||The reducer matches the action to it's case reducers |todos.actions|
 |||Finds 'todos/addTodo'|
+|||Runs its code to update state|
+- `ducks PATTERN` suggest exporting the reducer and action creators as NAMED EXPORTS.
+- EXPORTING integrates the reducer to the store as slice of state.
 
-- `ducks` pattern suggest exporting the reducer and action creators as NAMED EXPORTS `{Slice'sName}Slice.reducer`.
-    - EXPORTING integrates reducer to the store and used as slice of state.
-
-        export const { AC1, AC2 } = [TheSlicesName]Slice.action;      //ACTION CREATORS (AC)
-        export default [slice'sName]Slice.reducer                     //REDUCER
+          export const { AC1, AC2 } = [TheSlicesName]Slice.action;      //ACTION CREATORS (AC)
+          export default [slice'sName]Slice.reducer                     //REDUCER default export
          
-        export const { addTodo, toggleTodo } = todosSlice.actions
-        export default todosSlice.reducer
+          export const { addTodo, toggleTodo } = todosSlice.actions
+          export default todosSlice.reducer
 ###### TO ACCESS:
       -REDUCER ---> `todoSlice.reducer`
       -ACTION CREATORS ---> `addTodo.actions`
