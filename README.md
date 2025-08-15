@@ -72,18 +72,17 @@
         },        //THE NEW STATE DOES NOT HAVE PREVIOUS STATE
     }
 ## THE RETURNED OBJECT & AUTO-GENERATED ACTIONS FROM `createSlice( )`
-- createSlice({name,initialState,reducers}) automatically creates action creators</br>
-- `createSlice({object})`--> RETURNS AN OBJECT with SLICE REDUCERS AND ACTION CREATORS:
-||
-||
-    sliceName.reducer and sliceName.actions.</br>
+- `createSlice( { name, initialState, reducers } )` SLICE --> returns an object { name, reducer, actions creators }</br>
+- Generated Action Creators - accept 1 arguement (action.payload)
+                            - are based on reducer functions</br>
 
-                    sliceName = {                sliceName/type1 sliceName/type2  sliceName/type3
+                  const sliceName = {                sliceName/type1 sliceName/type2  sliceName/type3
                           name: sliceName,                         //prefix for generated action types
                           reducer: (state, action) => newState,      // Case reducer function
                           actions: {                             //Object of auto Generated action creators
-                             actionCreatorType1: (payload) => ({type:'sliceName/actionType1Name' , payload}),
-                             actionCreatorType2: (payload) => ({type:'sliceName/actionType2Name' , payload})
+                             actionCreator1: (payload) => (     --> action creator accepts 1 arg
+                                    { type:'sliceName/actionCreatorName' , payload }
+                              ), ...
                             },
                           caseReducers: {
                             actionType: (state, action) => newState
@@ -93,11 +92,9 @@
 ##### >>>>>>>>>>>>>> console.log({sliceName}Slice.actions.action('payload') </br>
 ##### >>>>>>>>>>>>>> console.log({todos}Slice.actions.addTodo('walk dog')) </br>
 ##### >>>>>>>>>>>>>> // {type: 'todos/addTodo', payload: 'walk dog'} </br>
-- The generated action creators names are based on reducer functions names
-- createSlice() generates action creators and reducers 
-- EXPORT action creators TO USE IN OTHER FILES:
+- EXPORT action creators TO USE IN OTHER FILES as `NAMED EXPORTS`:
 
-          export const { actionCreator1, actionCreator2 } = {TheReduxSlicesName}Slice.actions
+          export const { actionCreator1, actionCreator2 } = {TheSlicesName}Slice.actions
            
           export const { addTodo, toggleTodo } = todosSlice.actions
  - ACTION CREATORS ARE ACCESSED BY PROPERTY `addTodo.actions`
