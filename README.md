@@ -33,7 +33,9 @@
              }
         }
         const todosSlice = createSlice(options);   //takes in 1 parameter
-### Once the Object is created no need to create action objects or action creator
+---
+### Once the Object is created no need to create action objects or action creator WHEN USING REDUX TOOLKIT createSlice will auto generate the Action Objects and Action Creator in the back.
+---
 -This action type: `(switch case)`
 
        const favoriteRecipesReducer = (state = initialState, action) => {
