@@ -129,41 +129,40 @@
 - It wraps around createStore( ) and combineReducers( ) to simplify store setup.
 
       import { configureStore } from '@redux/toolkit
-      const store = configureStore({INPUT OBJECT})
-- INPUT OBJECT = A reducer property which defines a function, or An object of slice reducers both to create a root reducer.
-            
-            Input Object is Reducer Property
+      const store = configureStore( { OBJECT } )
+- OBJECT = 1. Has a reducer property or
+         = 2. Object of slice reducers
+         = Combine to create a root reducer 
+###### - Reducer Property example
+
            const store = configure(                                          export const store = configure(
-                           { reducer: {                                                   { reducer: {
-                              todos: todosReducer,                                           slice1: reducer1,
-                              filters: filtersReducer                                        slice2: reducer2,
-                             }     // Define a state field                                  }
-                                  // named `todos`, handled by `todosReducer`                                      
-               }                                                                             })
+                   { reducer: {                                                   { reducer: {
+                       todos: todosReducer,                                           slice1: reducer1,
+                       filters: filtersReducer                                        slice2: reducer2,
+                      }     // Define a state field                                  }
+                   }        // named `todos`, handled by `todosReducer`                })                  
 - Reducer combines all slice reducers into root reducer function no need for `combineReducers( )`
-- The root reducer creates a store no need for `createStore( )`
+- The root reducer then creates a store no need for `createStore( )`
 
 </br>
 </br>
 
 |REVIEW NOTES|
 |---|
-|Helps simplify and refactor Redux logic with functions and methods|
-|`createSlice(param=options)` function has a configuration object parameter----> OBJECT PROPERTIES: name, initialState, reducers|
-|A case reducer: A method to update state if a specific action is dipatched|
-|Code can be mutated in case reducer|
+|RTX helps simplifies Redux logic with functions|
+|`createSlice( confguration object param )` function ----> OBJECT PROPERTIES: name, initialState, reducers|
+|createSlice() auto generates action creators and slice reducers|
+|A case reducer: A method to update state when an action is dipatched|
+|Code can be mutated in case reducer using `Immer`|
 |`createSlice()` returns an object ----> OBJECT PROPERTIES: name, reducer, actions, caseReducers.|
 |When exporting action creators and reducers use "duck" pattern.|
 |`configureStore( )` function sets up store. Wrap around `createStore( )` and `combineReducers( )`|
 |When slices are separate files, Export the action creators as named exports and the reducer as a default export.|
-|createSlice() generates action creators and slice reducers to access them:|
 |export const { myActionCreator } = mySlice.actions;|
 |export default mySlice.reducer;|
 
 # DIFFERENCE BETWEEN createStore( ) and configureStore( )
-
-
-In Redux, createStore and configureStore set up the store for your state to live in.
+- In Redux, createStore and configureStore set up the store to hold state.
 Compare:
 
 ### 🏗️ createStore (Classic Redux)
