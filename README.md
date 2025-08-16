@@ -1,20 +1,21 @@
 # REDUX-Toolkit
 
 ## INTRO
-- Redux Toolkit STREAMLINES, SIMPLIES and SHORTENS written code as in:
+- Redux Toolkit STREAMLINES, SIMPLIES REDUX tasks (less written code) like:
   - Setting up the store with `configureStore( )`</br>
   - Creating reducers and action creators with `createSlice( )`</br>
-  - Toolkit reduces boilerplate allows mutable code for fewer errors </br>
-  - Toolkit has other useable functions</br>
+  - Reduces boilerplate and allow mutable code, for less errors </br>
+  - Many functions for building REDUX</br>
 ## "SLICES" OF STATE
 - A slice is a segment of the global state responsible for a particular feature. </br>
 - Slices include data, reducers, actions creators for a specific feature </br>
 - To reduce written code of SLICES Redux Toolkit has `createSlice( )`
-## REFRACTORING with createSlice( ) create a slice 
+## REFRACTORING with createSlice(configObject ) create a SLICE OBJECT
 - In Redux action types (AT), action creators (AC), and Reducers (R) are written out seperately and in seperate files.
-- `createSlice(Configuration Object argument)` ---> `A SLICE`
+- `createSlice(Configuration Object argument)` ---> `A SLICE OBJECT`
+- ~SLICE OBJECT`- contains a slice reducer and auto generated action creators
     - Auto generates the components (AT), (AC), (R) to manage a slice `NO NEED TO WRITE THEIR CODE` </br>
-- Create CONFIGURATION OBJECT for `createSlice()` - contains 3 properties  name, initialState, reducers
+- Create CONFIGURATION OBJECT - contains 3 properties  name, initialState, reducers
 - The case reducers are similar to switch(action.type) statement cases
                
         const options = {                      //configObject name can be any name
@@ -34,7 +35,7 @@
         }
         const todosSlice = createSlice(options);   //takes in 1 parameter
 ---
-### Once the Object is created no need to create action objects or action creator WHEN USING REDUX TOOLKIT createSlice will auto generate the Action Objects and Action Creator in the back.
+### Once the Object is created NO NEED TO CREATE ACTION OBJECTS or ACTION CREATORS when using REDUX TOOLKIT --createSlice will auto generate the Action Objects and Action Creator in the back--.
 ---
 -This action type: `(switch case)`
 
@@ -125,14 +126,16 @@
       -REDUCER ---> `todoSlice.reducer`
       -ACTION CREATORS ---> `addTodo.actions`
  
-## CONVERTING THE STORE TO USE `configureStore( )`
+## CONVERTING THE STORE TO USE `configureStore(config Object)`
 - It wraps around createStore( ) and combineReducers( ) to simplify store setup.
 
       import { configureStore } from '@redux/toolkit
-      const store = configureStore( { OBJECT } )
-- OBJECT = 1. Has a reducer property or
+      const store = configureStore( { config OBJECT } )
+- OBJECT = Contains a reducer property which is
+         = 1. assigned a function
          = 2. Object of slice reducers
-         = Combine to create a root reducer 
+         = Results of either is to create a root reducer
+-If  configureStore( object of reducer ) --> rootReducer created with combingReducers( ) 
 ###### - Reducer Property example
 
            const store = configure(                                          export const store = configure(
@@ -158,8 +161,11 @@
 |When exporting action creators and reducers use "duck" pattern.|
 |`configureStore( )` function sets up store. Wrap around `createStore( )` and `combineReducers( )`|
 |When slices are separate files, Export the action creators as named exports and the reducer as a default export.|
+|Export action creators as NAMED EXPORTS |
 |export const { myActionCreator } = mySlice.actions;|
+|Exort Reducers as a default export|
 |export default mySlice.reducer;|
+
 
 # DIFFERENCE BETWEEN createStore( ) and configureStore( )
 - In Redux, createStore and configureStore set up the store to hold state.
